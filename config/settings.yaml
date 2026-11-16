@@ -1,0 +1,47 @@
+# Business rules. Edit here (later: synced from the Configuration tab).
+# Nothing in this file is a secret.
+
+base:
+  zip: "90008"
+  lat: 34.0094      # approx. centroid of ZIP 90008 (Baldwin Hills / Crenshaw)
+  lng: -118.3463
+  visit_radius_miles: 50          # straight-line pre-filter; real drive time decides
+  visit_max_drive_minutes: 75
+
+scoring:
+  rules_version: "2026-11-10"
+  weights:            # must sum to 100
+    geo: 25
+    fit: 25
+    contact_quality: 20
+    personalization: 15
+    potential: 15
+  bands:
+    high: 80
+    qualified: 60
+    research: 40
+
+reorder:
+  default_cycle_days: 90        # from the existing tracker's Settings tab
+  reorder_soon_days: 14
+  lapsed_after_days: 180
+  sample_follow_up_days: 7
+
+outreach:
+  sequence_days: [0, 4, 10, 17]
+  call_queue_day: 24
+  min_days_between_touches: 3
+  warmup_start_per_mailbox: 5
+  max_per_mailbox: 30
+  send_window_local: ["09:00", "16:00"]
+  send_weekdays: [1, 2, 3]       # Tue, Wed, Thu (Mon=0)
+  max_bounce_rate: 0.02
+  max_complaint_rate: 0.001
+
+owners:
+  new_business: nathan
+  accounts: anthony
+
+spend_caps_usd_month:
+  anthropic: 75
+  google_maps: 40
